@@ -1,0 +1,283 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// PC: 1920×1080 원스크린 (가로 1920 기준 중앙 정렬, 좌우는 크롭)
+// MO: 상단 비주얼 400px + 신청 패널 세로 배치
+.page {
+  position: relative;
+  height: 1080px;
+  overflow: hidden;
+  background: $c-stage-bg;
+
+  @include mo {
+    height: auto;
+    overflow: visible;
+    background: $c-page-bg;
+  }
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+
+  @include mo {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    background: $c-stage-bg;
+  }
+}
+
+.visual {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  width: max(2074px, 108%);
+  height: 1168px;
+  transform: translateX(-50%);
+
+  img {
+    object-fit: cover;
+  }
+
+  @include mo {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+
+    img {
+      object-position: 94% center;
+    }
+  }
+}
+
+// 1920 기준 좌표계
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin-left: -960px;
+
+  @include mo {
+    width: 360px;
+    height: 400px;
+    margin-left: -180px;
+  }
+}
+
+.faceLight {
+  position: absolute;
+  top: 230px;
+  left: 1390px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 179, 90, 0.35) 0%,
+    rgba(255, 179, 90, 0) 100%
+  );
+  mix-blend-mode: screen;
+
+  @include mo {
+    display: none;
+  }
+}
+
+.character {
+  position: absolute;
+  top: 150px;
+  left: 1140px;
+  width: 800px;
+  height: 932px;
+  filter: drop-shadow(0 0 24px rgba(255, 179, 90, 0.35));
+
+  img {
+    object-fit: cover;
+  }
+
+  @include mo {
+    top: 30px;
+    left: 90px;
+    width: 290px;
+    height: 338px;
+  }
+}
+
+.gradCenter {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    960px 540px at 50% 540px,
+    rgba(5, 5, 8, 0.55) 0%,
+    rgba(5, 5, 8, 0.15) 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+
+  @include mo {
+    display: none;
+  }
+}
+
+.gradTopBottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(11, 11, 11, 0) 85%,
+    $c-page-bg 100%
+  );
+
+  @include mo {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.1) 35%,
+      rgba(11, 11, 11, 0.4) 70%,
+      $c-page-bg 100%
+    );
+  }
+}
+
+.title {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include mo {
+    top: 208px;
+  }
+}
+
+// ---------- 신청 패널 ----------
+.panelWrap {
+  position: absolute;
+  top: 507px;
+  left: calc(50% - 502px);
+
+  @include mo {
+    position: static;
+    padding: 4px 16px 40px;
+  }
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  border: 2px solid $c-gold-line;
+  background: rgba(10, 10, 12, 0.9);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(224, 162, 70, 0.45);
+  backdrop-filter: blur(6px);
+
+  @include mo {
+    flex-direction: column;
+    max-width: 560px;
+    margin: 0 auto;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    filter: drop-shadow(0 0 8px rgba(224, 162, 70, 0.4));
+  }
+}
+
+.rewardCol {
+  width: 380px;
+
+  @include mo {
+    width: auto;
+  }
+}
+
+.formCol {
+  width: 540px;
+  padding: 28px 32px;
+
+  @include mo {
+    width: auto;
+    padding: 22px 16px;
+    background: #141414;
+  }
+}
+
+// 코너 브래킷
+.bracket {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-color: $c-gold-light;
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+
+  &.tl {
+    top: -8px;
+    left: -8px;
+    border-top-width: 4px;
+    border-left-width: 4px;
+  }
+
+  &.tr {
+    top: -8px;
+    right: -8px;
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+
+  &.bl {
+    bottom: -8px;
+    left: -8px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+
+  &.br {
+    right: -8px;
+    bottom: -8px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+  }
+
+  @include mo {
+    width: 22px;
+    height: 22px;
+    border-color: $c-gold-point;
+
+    &.tl,
+    &.tr {
+      top: -6px;
+      border-top-width: 3px;
+    }
+
+    &.bl,
+    &.br {
+      bottom: -6px;
+      border-bottom-width: 3px;
+    }
+
+    &.tl,
+    &.bl {
+      left: -6px;
+      border-left-width: 3px;
+    }
+
+    &.tr,
+    &.br {
+      right: -6px;
+      border-right-width: 3px;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+@mixin mo {
+  @media (max-width: $bp-mo) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: ($bp-mo + 1)) {
+    @content;
+  }
+}
+
+// 호버 규칙: transition 0.2s ease-out, 키보드 포커스는 호버와 동일 + outline 2px
+@mixin interactive {
+  cursor: pointer;
+  transition:
+    color $transition,
+    background $transition,
+    border-color $transition,
+    box-shadow $transition;
+
+  &:focus-visible {
+    outline: 2px solid $c-gold-light;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin hover-focus {
+  &:not(:disabled):hover,
+  &:not(:disabled):focus-visible {
+    @content;
+  }
+}
+
+@mixin gold-text-gradient {
+  background-image: linear-gradient(180deg, #fff4c8 0%, #e8bf5a 42%, #b8862b 50%, #6e4c12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

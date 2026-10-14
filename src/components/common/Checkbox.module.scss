@@ -1,0 +1,69 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  cursor: pointer;
+
+  @include mo {
+    gap: 8px;
+  }
+}
+
+.input {
+  @include blind;
+}
+
+.box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background: #050505;
+  color: transparent;
+  transition:
+    background $transition,
+    border-color $transition;
+
+  .checkbox:hover & {
+    border-color: $c-gold-line;
+  }
+
+  .input:checked + & {
+    border-color: $c-gold;
+    background: $c-gold;
+    color: $c-white;
+  }
+
+  .input:focus-visible + & {
+    outline: 2px solid $c-gold-light;
+    outline-offset: 2px;
+  }
+}
+
+.label {
+  font-size: 13px;
+  line-height: normal;
+  color: $c-text;
+
+  @include mo {
+    font-size: 12px;
+  }
+}
+
+.strong .label {
+  font-size: 15px;
+  font-weight: 700;
+  color: $c-white;
+
+  @include mo {
+    font-size: 14px;
+  }
+}

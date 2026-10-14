@@ -1,0 +1,291 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: $c-white;
+
+  @include mo {
+    font-size: 17px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+
+  @include mo {
+    gap: 8px;
+  }
+}
+
+// input/text (번호 · 인증번호)
+.input {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  height: 50px;
+  padding: 0 16px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background: #050505;
+  transition:
+    border-color $transition,
+    box-shadow $transition;
+
+  input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: $c-white;
+
+    &::placeholder {
+      color: $c-placeholder;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &:focus-within:not(.isLocked) {
+    border: 1.5px solid $c-gold-light;
+    box-shadow: 0 0 10px rgba(224, 162, 70, 0.4);
+  }
+
+  &.isError,
+  &.isError:focus-within {
+    border: 1.5px solid $c-error;
+    box-shadow: none;
+  }
+
+  &.isLocked {
+    border-color: #333;
+    background: #151515;
+
+    input {
+      color: $c-placeholder;
+    }
+  }
+
+  @include mo {
+    height: 46px;
+    padding: 0 12px;
+    background: $c-page-bg;
+
+    input {
+      font-size: 13px;
+    }
+  }
+}
+
+.timer {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: $c-gold-point;
+
+  @include mo {
+    font-size: 12px;
+  }
+}
+
+.errorText {
+  font-size: 13px;
+  color: $c-error;
+
+  @include mo {
+    font-size: 12px;
+  }
+}
+
+// btn/line (인증번호 발송)
+.btnLine {
+  @include interactive;
+  flex-shrink: 0;
+  width: 140px;
+  height: 50px;
+  border: 1px solid $c-gold-line;
+  border-radius: 4px;
+  background: #1a150b;
+  font-size: 15px;
+  font-weight: 700;
+  color: $c-gold-light;
+
+  @include hover-focus {
+    border-color: $c-gold-light;
+    background: #2a2410;
+    box-shadow: 0 0 10px rgba(224, 162, 70, 0.45);
+    color: #ffe2a0;
+  }
+
+  &:disabled {
+    border-color: #444;
+    background: #2a2a2a;
+    color: $c-placeholder;
+  }
+
+  @include mo {
+    width: 104px;
+    height: 46px;
+    font-size: 13px;
+  }
+}
+
+// btn/secondary (인증번호 확인)
+.btnSecondary {
+  @include interactive;
+  flex-shrink: 0;
+  width: 140px;
+  height: 50px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background: #333;
+  font-size: 15px;
+  font-weight: 700;
+  color: $c-white;
+
+  @include hover-focus {
+    background: #3a3a3a;
+  }
+
+  &:disabled {
+    border-color: #444;
+    background: #2a2a2a;
+    color: $c-placeholder;
+  }
+
+  @include mo {
+    width: 64px;
+    height: 46px;
+    font-size: 13px;
+  }
+}
+
+.notice {
+  font-size: 13px;
+  color: $c-gold-point;
+
+  @include mo {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: $c-line;
+}
+
+.agreements {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+// link/detail (자세히 보기)
+.detail {
+  @include interactive;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: $c-text-muted;
+  white-space: nowrap;
+
+  @include hover-focus {
+    color: $c-gold-light;
+  }
+
+  @include mo {
+    font-size: 12px;
+  }
+}
+
+// btn/primary (사전예약 신청)
+.btnPrimary {
+  @include interactive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 62px;
+  border: 1.5px solid $c-gold-line;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #e6bf5e 0%, #9c7524 100%);
+  font-size: 22px;
+  font-weight: 700;
+  color: $c-gold-ink;
+
+  .arrow {
+    color: rgba(58, 40, 8, 0.55);
+  }
+
+  @include hover-focus {
+    background: linear-gradient(180deg, #f6d77d 0%, #b48a2e 100%);
+    box-shadow: 0 0 18px rgba(242, 196, 107, 0.6);
+  }
+
+  &:not(:disabled):active {
+    background: linear-gradient(180deg, #b8913c 0%, #7a5a18 100%);
+  }
+
+  &:disabled {
+    background: linear-gradient(180deg, $c-gold-dark 0%, #4a3912 100%);
+    color: #fff3d6;
+
+    .arrow {
+      color: rgba(242, 196, 107, 0.45);
+    }
+  }
+
+  @include mo {
+    height: 54px;
+    font-size: 17px;
+  }
+}
+
+.btnPrimaryLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lock {
+  width: 16px;
+  height: 18px;
+
+  @include mo {
+    width: 13px;
+    height: 15px;
+  }
+}

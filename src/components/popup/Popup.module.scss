@@ -1,0 +1,290 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ---------- 알림 ----------
+.alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0 4px;
+  text-align: center;
+}
+
+.alertHeading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: $c-white;
+}
+
+.alertDesc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: $c-text-dim;
+  white-space: pre-line;
+}
+
+// ---------- 약관 상세 ----------
+.consent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: $c-text-sub;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #3a3a3a;
+  font-size: 14px;
+
+  th,
+  td {
+    padding: 12px 14px;
+    border-top: 1px solid #3a3a3a;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th,
+  thead td,
+  thead th {
+    font-weight: 700;
+    color: $c-gold-point;
+  }
+
+  tbody th {
+    width: 150px;
+    background: #2a2416;
+    white-space: nowrap;
+  }
+
+  thead th {
+    background: #2a2416;
+  }
+
+  td {
+    line-height: 1.6;
+    color: $c-text;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  dt {
+    font-size: 15px;
+    font-weight: 700;
+    color: $c-white;
+  }
+
+  dd {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: $c-text-sub;
+  }
+}
+
+// ---------- 보상 안내 ----------
+.rewardBody {
+  padding-bottom: 24px;
+}
+
+.rewardIntro {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: $c-text;
+}
+
+.rewardList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rewardRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px 12px 12px;
+  border: 1px solid $c-line;
+  border-radius: 4px;
+  background: $c-popup-bg;
+
+  &:nth-child(even) {
+    background: #1e1e1e;
+  }
+}
+
+.rewardIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid $c-gold-dark;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2a2416 0%, #14110a 100%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.rewardIconPlaceholder {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8c7a4d;
+}
+
+.rewardInfo {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+
+  strong {
+    font-size: 15px;
+    color: $c-white;
+  }
+
+  span {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #9a9a9a;
+  }
+}
+
+.rewardAmount {
+  flex-shrink: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: $c-gold-light;
+}
+
+.rewardNotes {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: $c-text-muted;
+}
+
+// ---------- 정책 (내부 스크롤) ----------
+.policyScroll {
+  height: 520px;
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #1a1a1a;
+  font-size: 14px;
+  line-height: 24px;
+  color: $c-text;
+  white-space: pre-wrap;
+  outline: none;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin: 8px 0;
+    border-radius: 2px;
+    background: $c-line;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: $c-gold;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $c-gold $c-line;
+
+  &:focus-visible {
+    outline: 2px solid $c-gold-light;
+  }
+}
+
+.policyHeading {
+  font-size: 15px;
+  font-weight: 700;
+  color: $c-white;
+}
+
+@include mo {
+  .alertHeading {
+    font-size: 17px;
+  }
+
+  .alertDesc,
+  .text,
+  .sections dt,
+  .sections dd {
+    font-size: 14px;
+  }
+
+  .table {
+    font-size: 13px;
+
+    tbody th {
+      width: 104px;
+      white-space: normal;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+  }
+
+  .rewardRow {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .rewardIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .rewardInfo {
+    strong {
+      font-size: 14px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .rewardAmount {
+    font-size: 14px;
+  }
+
+  .policyScroll {
+    height: 400px;
+    padding: 14px;
+    font-size: 13px;
+    line-height: 21px;
+  }
+
+  .policyHeading {
+    font-size: 14px;
+  }
+}

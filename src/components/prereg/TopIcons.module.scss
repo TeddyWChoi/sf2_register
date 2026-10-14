@@ -1,0 +1,51 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.icons {
+  position: absolute;
+  top: 28px;
+  right: 48px;
+  z-index: $z-header;
+  display: flex;
+  gap: 12px;
+
+  @include mo {
+    top: 12px;
+    right: 16px;
+    gap: 8px;
+  }
+}
+
+// btn/icon (상단 아이콘)
+.link {
+  @include interactive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #b08e3b;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+
+  @include hover-focus {
+    border-color: $c-gold-light;
+    background: $c-gold-line;
+  }
+
+  @include mo {
+    width: 32px;
+    height: 32px;
+    border-width: 0.727px;
+  }
+}
+
+.img {
+  width: 22px;
+  height: 22px;
+
+  @include mo {
+    width: 16px;
+    height: 16px;
+  }
+}

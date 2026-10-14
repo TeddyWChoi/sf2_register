@@ -1,0 +1,104 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 28px 24px;
+  background: rgba(20, 17, 10, 0.85);
+
+  @include mo {
+    gap: 10px;
+    height: auto;
+    padding: 16px 14px;
+    background: #14110a;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $c-gold-light;
+  white-space: nowrap;
+
+  @include mo {
+    font-size: 16px;
+  }
+}
+
+.visual {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  overflow: hidden;
+  border: 1.5px solid #b8913c;
+  border-radius: 4px;
+
+  @include mo {
+    flex: none;
+    height: 170px;
+    border-width: 1px;
+  }
+}
+
+.img {
+  object-fit: cover;
+}
+
+.shade {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 90px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+
+  @include mo {
+    height: 60px;
+  }
+}
+
+// btn/pill (보상 자세히 보기)
+.pill {
+  @include interactive;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 163px;
+  height: 38px;
+  border: 1px solid $c-gold-line;
+  border-radius: 40px;
+  background: rgba(0, 0, 0, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  color: $c-gold-light;
+  white-space: nowrap;
+  transform: translateX(-50%);
+
+  span {
+    font-size: 18px;
+  }
+
+  @include hover-focus {
+    background: $c-gold-line;
+    color: $c-gold-ink;
+  }
+
+  @include mo {
+    bottom: 9px;
+    width: 126px;
+    height: 29px;
+    font-size: 12px;
+
+    span {
+      font-size: 12px;
+    }
+  }
+}

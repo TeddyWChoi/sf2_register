@@ -1,0 +1,39 @@
+// SF2 사전예약 디자인 토큰 (Figma: SF2 사전예약 디자인 가이드)
+
+// Color
+$c-black: #000;
+$c-page-bg: #0b0b0b;
+$c-stage-bg: #050608;
+$c-footer-bg: #0a0a0a;
+$c-white: #fff;
+$c-text: #cfcfcf;
+$c-text-sub: #c4c4c4;
+$c-text-muted: #8c8c8c;
+$c-text-dim: #a0a0a0;
+$c-placeholder: #6b6b6b;
+$c-line: #2e2e2e;
+$c-error: #e5322d;
+
+$c-gold: #af8e3b;
+$c-gold-point: #e0a246;
+$c-gold-light: #f2c46b;
+$c-gold-line: #d4a64a;
+$c-gold-dark: #8a6d2c;
+$c-gold-ink: #1a1206;
+
+$c-popup-bg: #222;
+$c-popup-line: #3d3d3d;
+
+// Font
+$font-sans: var(--font-noto-sans-kr), 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+$font-serif: var(--font-noto-serif-kr), 'Noto Serif KR', serif;
+
+// Breakpoint (PC 원스크린 / MO 압축형)
+$bp-mo: 1023px;
+
+// Motion
+$transition: 0.2s ease-out;
+
+// Layer
+$z-header: 10;
+$z-modal: 1000;

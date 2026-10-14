@@ -1,0 +1,149 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.footer {
+  position: relative;
+  background: $c-footer-bg;
+
+  // 상단 골드 라인 (중앙 진하게)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgba(212, 166, 74, 0) 0%,
+      rgba(212, 166, 74, 0.7) 50%,
+      rgba(212, 166, 74, 0) 100%
+    );
+  }
+
+  @include mo {
+    border-top: 1px solid $c-gold-dark;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+  height: 164px;
+  margin: 0 auto;
+
+  @include mo {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    width: auto;
+    height: auto;
+    padding: 20px 16px 22px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding-top: 40px;
+
+  @include mo {
+    align-items: center;
+    gap: 10px;
+    padding-top: 0;
+  }
+}
+
+.logos {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+
+  @include mo {
+    gap: 14px;
+  }
+}
+
+.logoPapaya {
+  width: 129.6px;
+  height: 26.4px;
+
+  @include mo {
+    width: 97.2px;
+    height: 19.8px;
+  }
+}
+
+.logoDragonfly {
+  width: 140.25px;
+  height: 20.4px;
+
+  @include mo {
+    width: 105.19px;
+    height: 15.3px;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 13px;
+
+  li + li::before {
+    content: '|';
+    margin: 0 12px;
+    color: #4a4a4a;
+  }
+
+  @include mo {
+    margin-top: 0;
+    font-size: 12px;
+  }
+}
+
+.link {
+  @include interactive;
+  color: $c-text;
+
+  @include hover-focus {
+    color: $c-gold-light;
+    text-decoration: underline;
+  }
+
+  &.privacy {
+    font-weight: 700;
+    color: $c-gold-point;
+  }
+}
+
+.copyright {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #777;
+
+  @include mo {
+    margin-top: 0;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+  }
+}
+
+.grade {
+  width: 413px;
+  height: 115px;
+
+  @include mo {
+    width: 309.75px;
+    height: 86.25px;
+  }
+}
