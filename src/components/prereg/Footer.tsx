@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 import type { PolicyType } from '@/components/popup/PolicyPopup';
 import styles from './Footer.module.scss';
 
@@ -18,14 +19,14 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
           <div className={styles.logos}>
             <Image
               className={styles.logoPapaya}
-              src="/images/footer/logo_papaya.png"
+              src={asset('/images/footer/logo_papaya.png')}
               alt="papaya play"
               width={216}
               height={44}
             />
             <Image
               className={styles.logoDragonfly}
-              src="/images/footer/logo_dragonfly.png"
+              src={asset('/images/footer/logo_dragonfly.png')}
               alt="DragonFly"
               width={220}
               height={32}
@@ -55,7 +56,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
         </div>
         <Image
           className={styles.grade}
-          src="/images/footer/img_grade_sf2.png"
+          src={asset('/images/footer/img_grade_sf2.png')}
           alt="게임물 등급 정보 — 제명: 스페셜포스2, 이용등급: 청소년 이용불가, 제작년월일: 2010년 12월 29일, 상호: (주)드래곤플라이, 등급분류번호: CC-NP-101229-007, 신고(등록)번호: 제 2006-000027호"
           width={826}
           height={230}

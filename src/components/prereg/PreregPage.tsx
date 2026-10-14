@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 import { useCallback, useRef, useState } from 'react';
 import AlertPopup from '@/components/popup/AlertPopup';
 import ConsentPopup from '@/components/popup/ConsentPopup';
@@ -43,12 +44,18 @@ export default function PreregPage() {
         <section className={styles.stage}>
           <div className={styles.visual} aria-hidden="true">
             <div className={styles.bg}>
-              <Image src="/images/main/bg.jpg" alt="" fill priority sizes="100vw" />
+              <Image src={asset('/images/main/bg.jpg')} alt="" fill priority sizes="100vw" />
             </div>
             <div className={styles.canvas}>
               <span className={styles.faceLight} />
               <div className={styles.character}>
-                <Image src="/images/main/char_hero.png" alt="" fill priority sizes="800px" />
+                <Image
+                  src={asset('/images/main/char_hero.png')}
+                  alt=""
+                  fill
+                  priority
+                  sizes="800px"
+                />
               </div>
             </div>
             <span className={styles.gradCenter} />

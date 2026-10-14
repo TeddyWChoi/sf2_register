@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 import styles from './RewardColumn.module.scss';
 
 type RewardColumnProps = {
@@ -15,7 +16,7 @@ export default function RewardColumn({ onOpenDetail }: RewardColumnProps) {
       <div className={styles.visual}>
         <Image
           className={styles.img}
-          src="/images/main/reward_main.png"
+          src={asset('/images/main/reward_main.png')}
           alt="사전예약자 보상 대표 이미지"
           fill
           sizes="(max-width: 1023px) 100vw, 332px"

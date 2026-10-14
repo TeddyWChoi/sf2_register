@@ -1,11 +1,12 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 import { EXTERNAL_LINKS, SHOW_HOME_LINK } from '@/data/config';
 import styles from './TopIcons.module.scss';
 
 const ICONS = [
-  { key: 'home', label: '스페셜포스2 공식 홈페이지', src: '/images/icons/ico_home.svg' },
-  { key: 'youtube', label: '스페셜포스2 유튜브', src: '/images/icons/ico_youtube.svg' },
-  { key: 'discord', label: '스페셜포스2 디스코드', src: '/images/icons/ico_discord.svg' },
+  { key: 'home', label: '스페셜포스2 공식 홈페이지', src: asset('/images/icons/ico_home.svg') },
+  { key: 'youtube', label: '스페셜포스2 유튜브', src: asset('/images/icons/ico_youtube.svg') },
+  { key: 'discord', label: '스페셜포스2 디스코드', src: asset('/images/icons/ico_discord.svg') },
 ] as const;
 
 /** 상단 외부 링크 아이콘 — 새 창 이동 (URL TBD) */

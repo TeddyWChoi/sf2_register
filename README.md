@@ -26,6 +26,15 @@ npm run lint
 npm run format
 ```
 
+## GitHub Pages 미리보기
+
+- 주소: https://teddywchoi.github.io/sf2_register/
+- `main` 브랜치에 push 하면 `.github/workflows/deploy-pages.yml`이 자동으로 빌드하고 배포합니다.
+- 최초 1회 설정: 저장소 **Settings › Pages › Build and deployment › Source**를 **GitHub Actions**로 지정
+- Pages 빌드에서만 정적 export와 `basePath: /sf2_register`가 적용됩니다 (`GITHUB_PAGES=true`). 로컬 개발이나 실서버 배포에는 영향이 없습니다.
+- 이미지 등 `public` 파일은 basePath가 붙도록 `asset('/images/...')`로 참조하세요 (`src/lib/asset.ts`).
+- API는 Mock이라 Pages에서도 인증번호 `123456`으로 전체 흐름을 확인할 수 있습니다.
+
 ## 구조
 
 ```

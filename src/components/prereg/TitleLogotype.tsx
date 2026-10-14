@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 import { PREREG_PERIOD } from '@/data/config';
 import styles from './TitleLogotype.module.scss';
 
@@ -16,7 +17,7 @@ export default function TitleLogotype() {
       <h1 className={styles.heading}>
         <Image
           className={styles.logo}
-          src="/images/main/logo_skill.png"
+          src={asset('/images/main/logo_skill.png')}
           alt="스페셜포스2 S.K.I.L.L."
           width={1882}
           height={488}
