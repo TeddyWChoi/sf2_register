@@ -1,38 +1,55 @@
-// 사전예약 보상 (임시 예시 문구 — 사업팀 보상 구성 확정 후 교체, SB-09 #7)
+// 사전예약 보상 (사업팀 확정 구성, 2026-10-15 수령)
+// 아이콘은 인게임 스크린샷에서 추출한 임시 이미지 — 원본 아이콘 수령 시 public/images/reward 교체
+// ExpUP 100P 아이콘은 미수령 (플레이스홀더 노출)
 
 export type RewardItem = {
   name: string;
-  description: string;
+  /** 지급 기간: 영구 / 30일 */
+  period: string;
   amount: string;
-  /** 아이콘 이미지 경로. 미정 시 플레이스홀더 노출 */
+  /** public 기준 아이콘 경로. 미정 시 플레이스홀더 노출 */
   icon?: string;
 };
 
 export const REWARD_ITEMS: RewardItem[] = [
   {
-    name: '보상 1 아이템명',
-    description: '아이템 설명이 들어갑니다. (예: 기간제 무기 스킨 30일)',
+    name: 'Papaya Founder Shirt',
+    period: '영구',
     amount: 'x1',
+    icon: '/images/reward/papaya_founder_shirt.png',
   },
+  { name: 'Eagle Eye', period: '30일', amount: 'x1', icon: '/images/reward/eagle_eye.png' },
   {
-    name: '보상 2 아이템명',
-    description: '아이템 설명이 들어갑니다. (예: 경험치 부스터 7일)',
-    amount: 'x3',
-  },
-  {
-    name: '보상 3 아이템명',
-    description: '아이템 설명이 들어갑니다. (예: 캐릭터 의상 영구)',
+    name: 'FNF2000 Predator',
+    period: '영구',
     amount: 'x1',
+    icon: '/images/reward/fn_f2000_predator.png',
   },
   {
-    name: '보상 4 아이템명',
-    description: '아이템 설명이 들어갑니다. (예: 오르골 박스 소환권)',
-    amount: 'x10',
+    name: 'FNF2000 Predator Papaya',
+    period: '영구',
+    amount: 'x1',
+    icon: '/images/reward/fn_f2000_predator_papaya.png',
+  },
+  { name: 'M67 Gravity', period: '영구', amount: 'x1', icon: '/images/reward/m67_gravity.png' },
+  {
+    name: 'Tomahawk Ruler',
+    period: '영구',
+    amount: 'x1',
+    icon: '/images/reward/tomahawk_ruler.png',
+  },
+  { name: 'ExpUP 100P', period: '30일', amount: 'x1' },
+  {
+    name: 'Quick SP Pay 30P',
+    period: '30일',
+    amount: 'x1',
+    icon: '/images/reward/quick_sp_pay_30p.png',
   },
   {
-    name: '보상 5 아이템명',
-    description: '아이템 설명이 들어갑니다. (예: 게임 머니)',
-    amount: 'x50,000',
+    name: 'Wall Spray : SF2 Founder',
+    period: '영구',
+    amount: 'x1',
+    icon: '/images/reward/wall_spray_sf2_founder.png',
   },
 ];
 

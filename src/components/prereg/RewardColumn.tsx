@@ -6,7 +6,7 @@ type RewardColumnProps = {
   onOpenDetail: () => void;
 };
 
-/** 사전예약자 보상 대표 이미지 (보상 확정 후 이미지 교체) */
+/** 사전예약자 보상 대표 이미지 (보상 9종 키비주얼, Figma: reward_key_visual) */
 export default function RewardColumn({ onOpenDetail }: RewardColumnProps) {
   return (
     <section className={styles.reward} aria-labelledby="reward-title">
@@ -16,7 +16,7 @@ export default function RewardColumn({ onOpenDetail }: RewardColumnProps) {
       <div className={styles.visual}>
         <Image
           className={styles.img}
-          src={asset('/images/main/reward_main.png')}
+          src={asset('/images/main/reward_main.jpg')}
           alt="사전예약자 보상 대표 이미지"
           fill
           sizes="(max-width: 1023px) 100vw, 332px"

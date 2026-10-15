@@ -1,6 +1,7 @@
 'use client';
 
 import Modal from '@/components/common/Modal';
+import { asset } from '@/lib/asset';
 import { REWARD_ITEMS, REWARD_NOTES } from '@/data/rewards';
 import styles from './Popup.module.scss';
 
@@ -29,14 +30,16 @@ export default function RewardPopup({ open, onClose }: RewardPopupProps) {
             <span className={styles.rewardIcon}>
               {item.icon ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={item.icon} alt="" />
+                <img src={asset(item.icon)} alt="" />
               ) : (
                 <span className={styles.rewardIconPlaceholder}>아이콘</span>
               )}
             </span>
             <span className={styles.rewardInfo}>
               <strong>{item.name}</strong>
-              <span>{item.description}</span>
+              <span className={item.period === '영구' ? styles.periodPermanent : undefined}>
+                {item.period}
+              </span>
             </span>
             <span className={styles.rewardAmount}>{item.amount}</span>
           </li>
