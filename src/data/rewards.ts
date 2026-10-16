@@ -1,6 +1,6 @@
-// 사전예약 보상 (사업팀 확정 구성, 2026-10-15 수령)
+// 사전예약 보상 (사업팀 확정 구성, 2026-10-15 수령 / 한글 아이템명 2026-10-16 반영, 무기류는 영문 유지)
 // 아이콘은 인게임 스크린샷에서 추출한 임시 이미지 — 원본 아이콘 수령 시 public/images/reward 교체
-// ExpUP 100P 아이콘은 미수령 (플레이스홀더 노출)
+// 경험치보너스 100% 아이콘은 미수령 (플레이스홀더 노출)
 
 export type RewardItem = {
   name: string;
@@ -13,12 +13,12 @@ export type RewardItem = {
 
 export const REWARD_ITEMS: RewardItem[] = [
   {
-    name: 'Papaya Founder Shirt',
+    name: '파파야플레이 시작 티셔츠',
     period: '영구',
     amount: 'x1',
     icon: '/images/reward/papaya_founder_shirt.png',
   },
-  { name: 'Eagle Eye', period: '30일', amount: 'x1', icon: '/images/reward/eagle_eye.png' },
+  { name: '이글아이 용병', period: '30일', amount: 'x1', icon: '/images/reward/eagle_eye.png' },
   {
     name: 'FNF2000 Predator',
     period: '영구',
@@ -38,15 +38,15 @@ export const REWARD_ITEMS: RewardItem[] = [
     amount: 'x1',
     icon: '/images/reward/tomahawk_ruler.png',
   },
-  { name: 'ExpUP 100P', period: '30일', amount: 'x1' },
+  { name: '경험치보너스 100%', period: '30일', amount: 'x1' },
   {
-    name: 'Quick SP Pay 30P',
+    name: '빠른 SP 획득 30%',
     period: '30일',
     amount: 'x1',
     icon: '/images/reward/quick_sp_pay_30p.png',
   },
   {
-    name: 'Wall Spray : SF2 Founder',
+    name: '스프레이 : SF2 새로운시작',
     period: '영구',
     amount: 'x1',
     icon: '/images/reward/wall_spray_sf2_founder.png',
