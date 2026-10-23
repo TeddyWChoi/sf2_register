@@ -192,6 +192,17 @@
   }
 }
 
+.noticeAge {
+  margin-top: -4px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8c8c8c;
+
+  @include mo {
+    font-size: 11px;
+  }
+}
+
 .divider {
   width: 100%;
   height: 1px;

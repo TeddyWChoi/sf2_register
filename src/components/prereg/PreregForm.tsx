@@ -19,9 +19,10 @@ import styles from './PreregForm.module.scss';
 const PHONE_REGEX = /^01[016789]\d{7,8}$/;
 
 const INITIAL_AGREEMENTS: Record<AgreementKey, boolean> = {
-  age: false,
   collect: false,
   entrust: false,
+  age: false,
+  marketingCollect: false,
   marketing: false,
 };
 
@@ -170,7 +171,13 @@ export default function PreregForm({ onAlert, onOpenConsent }: PreregFormProps) 
   };
 
   const handleAllAgree = (checked: boolean) => {
-    setAgreements({ age: checked, collect: checked, entrust: checked, marketing: checked });
+    setAgreements({
+      collect: checked,
+      entrust: checked,
+      age: checked,
+      marketingCollect: checked,
+      marketing: checked,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -183,7 +190,8 @@ export default function PreregForm({ onAlert, onOpenConsent }: PreregFormProps) 
 
     if (result.status === 'complete') {
       // TBD(SB-09 #13): 완료 후 폼 초기화 vs 완료 상태 유지 — 현재 초기화로 처리
-      onAlert(ALERTS.complete, resetForm);
+      // 만 19세 이상 미확인 시 신청은 완료, 보상 지급 대상에서 제외 (법무 검토 2026-10-23)
+      onAlert(agreements.age ? ALERTS.complete : ALERTS.completeNoReward, resetForm);
     } else if (result.status === 'duplicate') {
       onAlert(ALERTS.duplicate);
     } else {
@@ -311,6 +319,11 @@ export default function PreregForm({ onAlert, onOpenConsent }: PreregFormProps) 
           </li>
         ))}
       </ul>
+
+      <p className={`${styles.notice} ${styles.noticeAge}`}>
+        ※ 만 19세 미만이거나 만 19세 이상 확인에 체크하지 않은 경우, 사전예약 보상 지급 대상에서
+        제외됩니다.
+      </p>
 
       <button type="submit" className={styles.btnPrimary} disabled={!canSubmit}>
         <span className={styles.arrow} aria-hidden="true">

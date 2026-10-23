@@ -9,7 +9,8 @@ type FooterProps = {
 
 /**
  * 사전예약 푸터 — 정책 링크는 정식 페이지 준비 전까지 레이어 팝업으로 노출
- * 등급표시(img_grade_sf2)는 공홈 푸터 이미지 임시 사용 — SF2 등급분류번호 발급 시 교체 필수 (SB-09 #22)
+ * 등급표시(img_grade_sf2)는 공홈 푸터 이미지 임시 사용 — 사전예약 오픈 시 삭제 예정
+ * (법무 검토 2026-10-23: 등급분류 전에는 등급 표시 불필요). 등급분류번호 발급 후 새 이미지로 다시 노출
  */
 export default function Footer({ onOpenPolicy }: FooterProps) {
   return (

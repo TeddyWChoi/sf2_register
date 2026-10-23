@@ -5,16 +5,16 @@
 
 ## 스펙
 
-| 항목 | 내용 |
-| --- | --- |
-| 프레임워크 | Next.js 14.2.35 + React 18.3.1, App Router |
-| 언어 | TypeScript 5.3.3 |
-| 스타일링 | SCSS + CSS Modules (`*.module.scss`) |
-| 빌드 | Next.js 내장 빌드(Webpack) |
-| 패키지 매니저 | npm (`package-lock.json`) |
-| 실행 환경 | Node.js 24.21.0 / npm 11.19.0 (`.nvmrc`) |
-| 코드 규칙 | ESLint (next/core-web-vitals), Prettier |
-| 상태·폼 | React `useState`, `useRef` |
+| 항목          | 내용                                       |
+| ------------- | ------------------------------------------ |
+| 프레임워크    | Next.js 14.2.35 + React 18.3.1, App Router |
+| 언어          | TypeScript 5.3.3                           |
+| 스타일링      | SCSS + CSS Modules (`*.module.scss`)       |
+| 빌드          | Next.js 내장 빌드(Webpack)                 |
+| 패키지 매니저 | npm (`package-lock.json`)                  |
+| 실행 환경     | Node.js 24.21.0 / npm 11.19.0 (`.nvmrc`)   |
+| 코드 규칙     | ESLint (next/core-web-vitals), Prettier    |
+| 상태·폼       | React `useState`, `useRef`                 |
 
 ## 실행
 
@@ -66,8 +66,11 @@ public/images/         main(배경·캐릭터·로고·보상), icons, footer(�
 - 발송 후 03:00 카운트다운. 버튼은 [재발송]으로 바뀌고, 시간 만료 시 P9 팝업을 띄웁니다.
 - 인증 실패 1~4회는 P5, 5회째는 P6 + 발송/확인 버튼 잠금 (`AUTH_LOCK_MINUTES`, **TBD — 현재 임시 10분**).
 - 인증 성공 시 입력칸 잠금 + "인증 완료" 표시.
-- 전체 동의는 하위 4개를 일괄 체크/해제하고, 하위가 모두 체크되면 자동 체크됩니다.
-- [사전예약 신청]은 인증 완료 + 필수 3개(만 19세·수집이용·처리위탁) 동의 시 활성화됩니다.
+- 동의 항목 (법무 검토 2026-10-23 반영): [필수] 개인정보 수집·이용 / [필수] 개인정보 처리 위탁 / [선택] 만 19세 이상 확인 / [선택] 마케팅 목적 개인정보 수집·이용 / [선택] 광고성 정보 수신
+- 전체 동의는 하위 5개를 일괄 체크/해제하고, 하위가 모두 체크되면 자동 체크됩니다.
+- [사전예약 신청]은 인증 완료 + 필수 2개(수집·이용, 처리 위탁) 동의 시 활성화됩니다.
+- 만 19세 이상 확인은 선택입니다. 체크하지 않아도 신청은 되지만 **보상 지급 대상에서 제외**되며, 동의 목록 아래 안내 문구와 완료 팝업(`ALERTS.completeNoReward`)으로 알립니다. API에는 `agreements.age` 값으로 전달됩니다.
+- 광고성 문자 발송은 `marketingCollect`·`marketing` 두 선택 동의를 모두 받은 번호에만 보내세요.
 - 완료 팝업 [확인] 후 폼을 초기화합니다 (**TBD — SB-09 #13**).
 - 팝업 공통: 딤 + 배경 스크롤 잠금, ESC/[X]/[확인]으로 닫힘. 딤 클릭 닫힘은 알림 팝업에서 제외했습니다.
 
@@ -77,6 +80,7 @@ public/images/         main(배경·캐릭터·로고·보상), icons, footer(�
 반환 타입(`status`)에 맞춰 화면 분기(중복 P8, 잠금 P6, 만료 P9 등)가 이미 연결되어 있습니다.
 
 Mock 동작:
+
 - 인증번호 `123456` 입력 시 성공, 그 외에는 불일치
 - `01000000000`으로 발송하면 중복 신청(P8)
 
@@ -94,7 +98,8 @@ export const EXTERNAL_LINKS = { home: '공식 홈페이지 URL', ... };
 
 - 상단 아이콘 URL: `data/config.ts`의 `EXTERNAL_LINKS` (현재 `#`). 홈 아이콘은 위 항목대로 숨김 상태
 - 보상 구성·아이콘: `data/rewards.ts`, `public/images/main/reward_main.png` (현재 예시)
-- 등급표시: `public/images/footer/img_grade_sf2.png`는 공홈 이미지 임시 사용 (2010 드래곤플라이 등급). SF2 등급분류번호 발급 시 이미지와 `Footer.tsx`의 alt 텍스트를 교체하세요.
-- 회사명 표기: 정책 원문은 "버티고우 게임즈", 동의 팝업은 "버티고게임즈"
+- 등급표시: `public/images/footer/img_grade_sf2.png`는 공홈 이미지 임시 사용 (2010 드래곤플라이 등급). **사전예약 오픈 시 삭제 예정** (법무: 등급분류 전 표시 불필요). 등급분류번호 발급 후 다시 노출할 때는 이미지와 `Footer.tsx`의 alt 텍스트를 교체하세요.
+- 회사명 표기: 동의 팝업을 정책 원문과 같은 "(주)버티고우 게임즈"로 통일했습니다.
+- 신규 마케팅 동의 문구(`data/consents.ts`의 `marketingCollect`, `marketing`)는 초안입니다. 사업팀·법무 최종 확인이 필요합니다.
 - 알림 문구: P5의 "(1~4회 실패 시)"는 노출 조건 주석으로 보고 제외했습니다. P6 "버튼이 비활성화됩니다"는 원문 그대로 두었습니다 (확정 대기).
 - API 오류 공통 알림(`ALERTS.serverError`)은 디자인에 없어 임시 문구로 넣었습니다.
