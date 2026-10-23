@@ -1,5 +1,5 @@
 // 사전예약 약관 동의 항목 / 상세 팝업 문구 (Figma: 사전예약 팝업 보드 13109:321)
-// ※ 2026-10-23 법무 검토 반영: 마케팅 동의 2개 분리, 만 19세 확인 [선택](미확인·19세 미만은 보상 제외), 회사명 통일
+// ※ 2026-10-23 법무 검토 반영: 마케팅 동의 2개 분리, 만 19세 확인 [필수](A안, 휴대폰 인증은 연령 미확인 — 19세 미만 확인 시 보상 제외 안내), 회사명 통일
 // ※ 신규 마케팅 동의 문구는 초안 — 사업팀·법무 최종 확인 필요 (SB-09)
 
 export type AgreementKey = 'collect' | 'entrust' | 'age' | 'marketingCollect' | 'marketing';
@@ -67,7 +67,7 @@ export const AGREEMENTS: Agreement[] = [
   },
   {
     key: 'age',
-    required: false,
+    required: true,
     label: '본인은 만 19세 이상임을 확인합니다.',
   },
   {

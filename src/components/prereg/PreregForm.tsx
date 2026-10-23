@@ -190,8 +190,7 @@ export default function PreregForm({ onAlert, onOpenConsent }: PreregFormProps) 
 
     if (result.status === 'complete') {
       // TBD(SB-09 #13): 완료 후 폼 초기화 vs 완료 상태 유지 — 현재 초기화로 처리
-      // 만 19세 이상 미확인 시 신청은 완료, 보상 지급 대상에서 제외 (법무 검토 2026-10-23)
-      onAlert(agreements.age ? ALERTS.complete : ALERTS.completeNoReward, resetForm);
+      onAlert(ALERTS.complete, resetForm);
     } else if (result.status === 'duplicate') {
       onAlert(ALERTS.duplicate);
     } else {
@@ -321,8 +320,7 @@ export default function PreregForm({ onAlert, onOpenConsent }: PreregFormProps) 
       </ul>
 
       <p className={`${styles.notice} ${styles.noticeAge}`}>
-        ※ 만 19세 미만이거나 만 19세 이상 확인에 체크하지 않은 경우, 사전예약 보상 지급 대상에서
-        제외됩니다.
+        ※ 만 19세 미만으로 확인될 경우 사전예약 보상 지급 대상에서 제외될 수 있습니다.
       </p>
 
       <button type="submit" className={styles.btnPrimary} disabled={!canSubmit}>
