@@ -1,18 +1,16 @@
 # main 브랜치에 push 하면 GitHub Pages로 자동 배포
 # 권장: 저장소 Settings > Pages > Build and deployment > Source 를 "GitHub Actions" 로 설정
 # Source 가 "Deploy from a branch" 로 남아 있으면 GitHub 기본 배포(pages build and deployment)가
-# README 를 Jekyll 페이지로 만들어 사이트를 덮어쓰므로, 그 배포가 끝난 뒤 한 번 더 배포한다.
+# README 를 Jekyll 페이지로 만들어 사이트를 덮어쓰므로, 같은 커밋의 그 배포가 끝날 때까지 기다렸다가 배포한다.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
-  workflow_run:
-    workflows: ['pages build and deployment']
-    types: [completed]
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -45,5 +43,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Wait for GitHub default branch deploy (README) to finish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 40); do
+            pending=$(gh api "repos/${{ github.repository }}/actions/runs?head_sha=${{ github.sha }}&per_page=20" \
+              --jq '[.workflow_runs[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            [ "$pending" = "0" ] && exit 0
+            sleep 15
+          done
       - id: deployment
         uses: actions/deploy-pages@v4
