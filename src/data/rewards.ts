@@ -38,7 +38,12 @@ export const REWARD_ITEMS: RewardItem[] = [
     amount: 'x1',
     icon: '/images/reward/tomahawk_ruler.png',
   },
-  { name: '경험치보너스 100%', period: '30일', amount: 'x1' },
+  {
+    name: '경험치보너스 100%',
+    period: '30일',
+    amount: 'x1',
+    icon: '/images/reward/exp_bonus_100p.png',
+  },
   {
     name: '빠른 SP 획득 30%',
     period: '30일',
