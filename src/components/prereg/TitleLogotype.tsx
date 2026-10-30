@@ -23,6 +23,14 @@ export default function TitleLogotype() {
           height={488}
           priority
         />
+        <Image
+          className={styles.operation}
+          src={asset('/images/main/logo_operation_reforce.png')}
+          alt="Operation RE:FORCE"
+          width={1400}
+          height={162}
+          priority
+        />
         <span className={styles.headingText}>지금 사전예약 중</span>
       </h1>
       <p className={styles.period}>
